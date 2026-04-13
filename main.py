@@ -25,8 +25,10 @@ def main():
     path_router = PathRouter(config.settings)
     path_router.resolve_output_path()
 
+    cli.cli_banner()
+
     # Instantiate InputController
-    input_controller = InputController(cli)
+    input_controller = InputController(cli, config.settings)
 
 
 if __name__ == "__main__":
