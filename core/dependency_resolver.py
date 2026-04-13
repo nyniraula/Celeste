@@ -2,21 +2,13 @@ import shutil
 
 
 class DependencyResolver:
-    def _check_existence(self, tool: str) -> str | bool:
+    def _check_existence(self, tool):
         """Returns the path if the tool exists, if not returns false"""
-        path: str = shutil.which(tool)
-        return path if bool(path) else False
+        return shutil.which(tool)
 
-    def has_ffmpeg(self) -> str | bool:
+    def has_ffmpeg(self):
         return self._check_existence("ffmpeg")
 
-    def has_js_runtime(self) -> str | None:
-        deno_path: str | bool = self._check_existence("deno")
-        node_path: str | bool = self._check_existence("node")
-
-        if deno_path:
-            return deno_path
-        elif node_path:
-            return node_path
-        else:
-            return None
+    def has_js_runtime(self):
+        """returns the first truthy value, if both are Falsy -> returns the last one which is None"""
+        return self._check_existence("deno") or self._check_existence("node")
