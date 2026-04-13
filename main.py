@@ -1,11 +1,14 @@
 from core.config import Config
 from core.dependency_resolver import DependencyResolver
 from core.path_router import PathRouter
-
-from ui.cli_builder import 
+from input.input_controller import InputController
+from ui.cli_builder import CLIBuilder
 
 
 def main():
+    # Instantiate CLI and Rich Console
+    cli = CLIBuilder()
+
     # Instantiates Dep Resolver and checks for ffmpeg
     dependency_resolver = DependencyResolver()
 
@@ -21,6 +24,9 @@ def main():
     # Instantiates Path router and resolves download dir
     path_router = PathRouter(config.settings)
     path_router.resolve_output_path()
+
+    # Instantiate InputController
+    input_controller = InputController(cli)
 
 
 if __name__ == "__main__":
