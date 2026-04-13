@@ -5,9 +5,9 @@ class Fetcher:
     def __init__(self, url, settings):
         self.url = url
         self.settings = settings
-        self.info = self.fetch_info()
 
-    def fetch_info(self):
+    def fetch_info(self, console):
 
-        with YoutubeDL(self.settings) as ydl:
-            return ydl.extract_info(self.url, download=False)
+        with console.status("fetching data", spinner="dots"):
+            with YoutubeDL(self.settings) as ydl:
+                return ydl.extract_info(self.url, download=False)

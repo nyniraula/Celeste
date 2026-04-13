@@ -8,4 +8,6 @@ class InputController:
 
         self.fetcher = Fetcher(self.url_handler.url, settings)
 
-        cli.media_info(self.fetcher.info)
+        self.info = self.fetcher.fetch_info(cli.console)
+
+        cli.media_info(self.info)
