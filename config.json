@@ -1,0 +1,31 @@
+{
+  "no_warnings": true,
+  "quiet": true,
+  "merge_output_format": "mp4",
+  "outtmpl": "Downloads/Celeste/%(title)s - %(uploader)s_[%(height)sp].%(ext)s",
+  "download_type": "video",
+  "writesubtitles": false,
+  "writeautomaticsub": true,
+  "subtitleslangs": ["en"],
+  "subtitlesformat": "srt/ass/vtt",
+  "playlist_download_type": "audio",
+  "playlist_download_cap": "1080",
+  "postprocessor_args": {
+    "ffmpeg": ["-c:a", "aac"]
+  },
+  "writethumbnail": true,
+  "embedthumbnail": true,
+  "postprocessors": [
+    {
+      "key": "EmbedThumbnail"
+    }
+  ],
+  "js_runtimes": {
+    "deno": {
+      "path": null
+    },
+    "node": {
+      "path": "C:\\Program Files\\nodejs\\node.EXE"
+    }
+  }
+}
