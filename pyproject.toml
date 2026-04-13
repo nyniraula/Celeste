@@ -5,5 +5,8 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
+    "pyfiglet>=1.0.4",
+    "questionary>=2.1.1",
+    "rich>=15.0.0",
     "yt-dlp[default]>=2026.3.17",
 ]

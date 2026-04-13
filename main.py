@@ -2,6 +2,8 @@ from core.config import Config
 from core.dependency_resolver import DependencyResolver
 from core.path_router import PathRouter
 
+from ui.cli_builder import 
+
 
 def main():
     # Instantiates Dep Resolver and checks for ffmpeg
