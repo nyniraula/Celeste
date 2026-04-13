@@ -2,6 +2,10 @@ import shutil
 
 
 class DependencyResolver:
+    def __init__(self):
+        self.ffmpeg = self.has_ffmpeg()
+        self.js_runtime = self.has_js_runtime()
+
     def _check_existence(self, tool):
         """Returns the path if the tool exists, if not returns false"""
         return shutil.which(tool)
