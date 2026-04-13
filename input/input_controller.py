@@ -5,9 +5,7 @@ from input.url_handler import URLHandler
 class InputController:
     def __init__(self, cli, settings):
         self.url_handler = URLHandler(cli)
-
         self.fetcher = Fetcher(self.url_handler.url, settings)
+        self.media_info = self.fetcher.fetch_info(cli.console)
 
-        self.info = self.fetcher.fetch_info(cli.console)
-
-        cli.media_info(self.info)
+        cli.media_info(self.media_info)

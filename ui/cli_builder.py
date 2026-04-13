@@ -33,17 +33,23 @@ class CLIBuilder:
 
     # Display url,title,duration
     def media_info(self, info):
-        video_title = info.get("title", "")
-        channel = info.get("channel", "")
-        duration = info.get("duration_string", "")
+        _type = info.get("_type", "single")
 
         T = Table(box=None, show_header=False)
         T.add_column(style="dim", width=10)
         T.add_column()
 
-        T.add_row("Title", f"[yellow]{video_title}[/]")
-        T.add_row("Channel", f"[red]{channel}[/]")
-        T.add_row("Duration", f"[purple]{duration}[/]")
+        media_title = info.get("title", "")
+        channel = info.get("channel", "")
+
+        if _type == "playlist":
+            T.add_row("Playlist", f"[white]{media_title}[/]")
+            T.add_row("Channel", f"[white]{channel}[/]")
+            T.add_row("Items", f"[magenta]{info.get('playlist_count', '')}[/]")
+        else:
+            T.add_row("Title", f"[white]{media_title}[/]")
+            T.add_row("Channel", f"[white]{channel}[/]")
+            T.add_row("Duration", f"[magenta]{info.get('duration_string', '')}[/]")
 
         self.console.print(Padding(Rule(style="dim"), (0, 2)))
         self.console.print(Padding(T, (0, 2)))
