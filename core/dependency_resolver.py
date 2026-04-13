@@ -14,5 +14,7 @@ class DependencyResolver:
         return self._check_existence("ffmpeg")
 
     def has_js_runtime(self):
-        """returns the first truthy value, if both are Falsy -> returns the last one which is None"""
-        return self._check_existence("deno") or self._check_existence("node")
+        return {
+            "deno": {"path": self._check_existence("deno")},
+            "node": {"path": self._check_existence("node")},
+        }
