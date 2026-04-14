@@ -26,10 +26,11 @@ def main():
     path_router = PathRouter(config.settings)
     os_relative_path = path_router.resolve_output_path()
 
-    config.settings["path"] = os_relative_path
+    config.settings["paths"] = os_relative_path
 
     cli.cli_banner()
 
+    print(config.settings["paths"]["home"], config.settings["paths"]["temp"])
     # Instantiate InputController
     input_controller = InputController(cli, config.settings)
 

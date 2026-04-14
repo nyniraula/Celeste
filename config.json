@@ -4,8 +4,8 @@
   "merge_output_format": "mp4",
   "outtmpl": "%(title)s - %(uploader)s_[%(height)sp].%(ext)s",
   "paths": {
-    "home": "/Downloads/Celeste",
-    "temp": "/Downloads/Celeste/.tmp"
+    "home": "Downloads/Celeste",
+    "temp": "Downloads/Celeste/.tmp"
   },
   "single_download_type": "video",
   "writesubtitles": false,

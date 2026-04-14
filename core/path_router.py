@@ -18,10 +18,12 @@ class PathRouter:
         whole_download_path = Path.home() / self.download_path
         whole_temp_download_path = Path.home() / self.temp_download_path
 
+        print(whole_download_path, whole_temp_download_path)
+
         # Checks if dir and sub dir exists and creates missing one's, doesnt touch if already exist
         whole_temp_download_path.mkdir(exist_ok=True, parents=True)
 
         return {
-            "home": whole_download_path,
-            "temp": whole_temp_download_path,
+            "home": str(whole_download_path),
+            "temp": str(whole_temp_download_path),
         }  # returns the whole path to update the config for all os-es
