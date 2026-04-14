@@ -2,6 +2,7 @@ from core.config import Config
 from core.dependency_resolver import DependencyResolver
 from core.path_router import PathRouter
 from input.input_controller import InputController
+from pipeline.media_pipeline import MediaPipeline
 from ui.cli_builder import CLIBuilder
 
 
@@ -29,6 +30,12 @@ def main():
 
     # Instantiate InputController
     input_controller = InputController(cli, config.settings)
+
+    media_pipeline = MediaPipeline(
+        input_controller.url, input_controller.media_info, config.settings, cli
+    )
+
+    media_pipeline.start_downloader()
 
 
 if __name__ == "__main__":

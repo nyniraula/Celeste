@@ -3,7 +3,7 @@ from pyfiglet import figlet_format
 from rich.console import Console
 from rich.padding import Padding
 from rich.rule import Rule
-from rich.table import Table
+from rich.table import Table, box
 
 
 class CLIBuilder:
@@ -53,3 +53,36 @@ class CLIBuilder:
 
         self.console.print(Padding(Rule(style="dim"), (0, 2)))
         self.console.print(Padding(T, (0, 2)))
+
+    def download_formats(self, fmts):
+        T = Table(box=box.SIMPLE, padding=(0, 2), pad_edge=True)
+
+        T.add_column("[dim]#", width=3)
+        T.add_column("[dim]quality")
+        T.add_column("[dim]resolution")
+        T.add_column("[dim]est. size")
+
+        for i, f in enumerate(fmts):
+            format_note = f.get("format_note")
+            resolution = f.get("resolution")
+            filesize_bytes = f.get("filesize_approx")
+
+            est_size_mb = (
+                f"{round(filesize_bytes / (1024 * 1024))} MB"
+                if filesize_bytes
+                else "N/A"
+            )
+            T.add_row(f"{i + 1}", f"{format_note}", f"{resolution}", f"{est_size_mb}")
+
+        self.console.print(Padding(T, (0, 2)))
+
+        format_choice = questionary.select(
+            "Select a quality",
+            choices=[
+                (questionary.Choice(title=f"{f.get('format_note')}", value=f))
+                for f in fmts
+            ],
+            instruction="(Arrow keys + Enter)",
+        ).ask()
+
+        return format_choice
