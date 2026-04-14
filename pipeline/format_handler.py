@@ -32,7 +32,7 @@ class FormatHandler:
         ext = fmt.get("ext")
         height = fmt.get("height")
 
-        if not (vcodec or height):
+        if not vcodec or not height:
             return None
 
         for VCODEC in FormatHandler.VCODEC_ORDER:
@@ -69,9 +69,7 @@ class FormatHandler:
         ]
 
         finalized_data = (
-            applied_min_height_data
-            if len(applied_min_height_data) > 1
-            else deduped_data
+            applied_min_height_data if len(applied_min_height_data) else deduped_data
         )
 
         return [f.ref for f in finalized_data]
