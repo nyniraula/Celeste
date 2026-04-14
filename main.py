@@ -24,7 +24,9 @@ def main():
 
     # Instantiates Path router and resolves download dir
     path_router = PathRouter(config.settings)
-    path_router.resolve_output_path()
+    os_relative_path = path_router.resolve_output_path()
+
+    config.settings["path"] = os_relative_path
 
     cli.cli_banner()
 

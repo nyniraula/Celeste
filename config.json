@@ -2,7 +2,11 @@
   "no_warnings": true,
   "quiet": true,
   "merge_output_format": "mp4",
-  "outtmpl": "Downloads/Celeste/%(title)s - %(uploader)s_[%(height)sp].%(ext)s",
+  "outtmpl": "%(title)s - %(uploader)s_[%(height)sp].%(ext)s",
+  "paths": {
+    "home": "/downloads",
+    "temp": "/downloads/.tmp"
+  },
   "single_download_type": "video",
   "writesubtitles": false,
   "writeautomaticsub": true,
