@@ -14,7 +14,7 @@ class CLIBuilder:
 
     # prints the Celeste Banner
     def cli_banner(self):
-        banner = figlet_format(self.title, font="sblood")
+        banner = figlet_format(self.title, font="contrast")
         # fonts: banner3-D , banner4, poison, larry3d,contrast, cosmic, roman, rowancap, sblood
         self.console.print(Padding(f"[#ffc3ff]{banner}[/]", (0, 2)))
         self.console.print(Padding(f"[dim]{self.desc}", (0, 2)))
