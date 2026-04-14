@@ -6,7 +6,6 @@ class Download:
         self.url = url
         self.settings = settings
         self.constants = constants
-        self.console = console
 
     def _download(self):
         with YoutubeDL(self.settings) as ydl:
